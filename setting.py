@@ -24,11 +24,23 @@ label = tk.Label(win, text="Edit Experiment", bg="grey", font=('Times', 12, 'bol
 
 #2nd Variable
 
-label1 = tk.Label(win, text="Name of Substance: ").place(x=0,y=50)
+mb = Menubutton(text="Type of Matter", relief=RAISED)
+mb.place(x=10, y= 50)
+
+mb.menu = Menu(mb)
+mb["menu"] = mb.menu
+
+Solid = IntVar()
+Liquid = IntVar()
+Gas = IntVar()
+
+solid = mb.menu.add_checkbutton(label="Solid",variable=Solid)
+liquid = mb.menu.add_checkbutton(label="Liquid",variable=Liquid)
+gas = mb.menu.add_checkbutton(label="Gas",variable=Gas)
 
 
 mb = Menubutton(text="Name of Substance", relief=RAISED)
-mb.place(x=120, y= 48)
+mb.place(x=110, y= 48)
 
 mb.menu = Menu(mb)
 mb["menu"] = mb.menu
@@ -41,7 +53,7 @@ copp_electrode = mb.menu.add_checkbutton(label="Copper Electrode",variable=Coppe
 
 #1st Amount
 mb = Menubutton(text="Amount", relief=RAISED)
-mb.place(x=240, y= 48)
+mb.place(x=230, y= 48)
 
 mb.menu = Menu(mb)
 mb["menu"] = mb.menu
@@ -58,26 +70,26 @@ three = mb.menu.add_checkbutton(label="3",variable=three)
 four = mb.menu.add_checkbutton(label="4",variable=four)
 five = mb.menu.add_checkbutton(label="5",variable=five)
 
-varx = 100
-vary = varx + 50
-varx = vary
-
 
 def drop():
-    global count
-'''
-    for i in range(10):
-        Frame(win, width=5, height=5, bg="grey").grid(row=0, column=i)
+    global count 
 
-    for j in range(10):
-        Frame(win, width=, height=5, bg="grey").grid(column=0, row=j)
-'''
-    label1 = tk.Label(win, text="Name of Substance: ")
-    label1.grid(row=count, column=1)
+    mb = Menubutton(text="Type of Matter", relief=RAISED)
+    mb.place(x=10, y= count)
 
+    mb.menu = Menu(mb)
+    mb["menu"] = mb.menu
+
+    Solid = IntVar()
+    Liquid = IntVar()
+    Gas = IntVar()
+
+    solid = mb.menu.add_checkbutton(label="Solid",variable=Solid)
+    liquid = mb.menu.add_checkbutton(label="Liquid",variable=Liquid)
+    gas = mb.menu.add_checkbutton(label="Gas",variable=Gas)
 
     mb = Menubutton(text="Name of Substance", relief=RAISED)
-    mb.grid(row=count, column=2)
+    mb.place(x=110, y= count)
 
     mb.menu = Menu(mb)
     mb["menu"] = mb.menu
@@ -90,7 +102,7 @@ def drop():
 
     #1st Amount
     mb = Menubutton(text="Amount", relief=RAISED)
-    mb.grid(row=count, column=3)
+    mb.place(x=230, y= count)
 
     mb.menu = Menu(mb)
     mb["menu"] = mb.menu
@@ -106,9 +118,11 @@ def drop():
     three = mb.menu.add_checkbutton(label="3",variable=three)
     four = mb.menu.add_checkbutton(label="4",variable=four)
     five = mb.menu.add_checkbutton(label="5",variable=five)
-    count += 1
+    count+=38
     return 0
-count = 2
+
+
+count = 85
 button_1 = tk.Button(win, text="Add", width=5, height=1, command=drop).place(x=125,y=270)
 
 win.mainloop()
