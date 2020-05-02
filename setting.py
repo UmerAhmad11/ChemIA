@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import *
 import pyautogui
+import pygame
 
 win = tk.Tk()
 win.geometry("300x300")
