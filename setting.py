@@ -70,9 +70,13 @@ three = mb.menu.add_checkbutton(label="3",variable=three)
 four = mb.menu.add_checkbutton(label="4",variable=four)
 five = mb.menu.add_checkbutton(label="5",variable=five)
 
+BUTTON_PRESSED = False
+
 
 def drop():
+    
     global count 
+    global i
 
     mb = Menubutton(text="Type of Matter", relief=RAISED)
     mb.place(x=10, y= count)
@@ -118,11 +122,15 @@ def drop():
     three = mb.menu.add_checkbutton(label="3",variable=three)
     four = mb.menu.add_checkbutton(label="4",variable=four)
     five = mb.menu.add_checkbutton(label="5",variable=five)
+    
+    while i >= 5:
+        button_1.configure(state=DISABLED)
+    i += 1
     count+=38
     return 0
 
-
 count = 85
+i = 1
 button_1 = tk.Button(win, text="Add", width=5, height=1, command=drop).place(x=125,y=270)
 
 win.mainloop()
