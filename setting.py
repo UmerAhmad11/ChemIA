@@ -25,51 +25,41 @@ label = tk.Label(win, text="Edit Experiment", bg="grey", font=('Times', 12, 'bol
 
 #2nd Variable
 
-mb = Menubutton(text="Type of Matter", relief=RAISED)
-mb.place(x=10, y= 50)
+def func_orig2(value):
+    print(value)
+    
 
-mb.menu = Menu(mb)
-mb["menu"] = mb.menu
+var = StringVar(win)
+var.set("Matter")
 
-Solid = IntVar()
-Liquid = IntVar()
-Gas = IntVar()
-
-solid = mb.menu.add_checkbutton(label="Solid",variable=Solid)
-liquid = mb.menu.add_checkbutton(label="Liquid",variable=Liquid)
-gas = mb.menu.add_checkbutton(label="Gas",variable=Gas)
+d_1 = OptionMenu(win, var, "Solid", "Liquid", "Gas", command=func_orig2)
+d_1.config(width=8)
+d_1.place(x=10, y=48)
 
 
-mb = Menubutton(text="Name of Substance", relief=RAISED)
-mb.place(x=110, y= 48)
 
-mb.menu = Menu(mb)
-mb["menu"] = mb.menu
+def func_orig1(value):
+    print(value)
+    
 
-Zinc_Electrode = IntVar()
-Copper_Electrode = IntVar()
+var = StringVar(win)
+var.set("Substance")
 
-zinc_electrode = mb.menu.add_checkbutton(label="Zinc Electrode",variable=Zinc_Electrode)
-copp_electrode = mb.menu.add_checkbutton(label="Copper Electrode",variable=Copper_Electrode)
+c_1 = OptionMenu(win, var, "Zinc", "Copper", command=func_orig1)
+c_1.config(width=10)
+c_1.place(x=110, y=48)
 
 #1st Amount
-mb = Menubutton(text="Amount", relief=RAISED)
-mb.place(x=230, y= 48)
+def func_orig(value):
+    print(value)
 
-mb.menu = Menu(mb)
-mb["menu"] = mb.menu
+var = StringVar(win)
+var.set("Amount")
 
-one = IntVar()
-two = IntVar()
-three = IntVar()
-four = IntVar()
-five = IntVar()
-
-one = mb.menu.add_checkbutton(label="1",variable=one)
-two = mb.menu.add_checkbutton(label="2",variable=two)
-three = mb.menu.add_checkbutton(label="3",variable=three)
-four = mb.menu.add_checkbutton(label="4",variable=four)
-five = mb.menu.add_checkbutton(label="5",variable=five)
+w_1 = OptionMenu(win, var, "1", "2", "3", command=func_orig)
+w_1.config(font=('Helvetica', (8)))
+w_1.config(width=4)
+w_1.place(x=220, y=48)
 
 BUTTON_PRESSED = False
 
@@ -79,50 +69,40 @@ def drop():
     global count 
     global i
 
-    mb = Menubutton(text="Type of Matter", relief=RAISED)
-    mb.place(x=10, y= count)
+    def func_3(value):
+        print(value)
+    
 
-    mb.menu = Menu(mb)
-    mb["menu"] = mb.menu
+    var = StringVar(win)
+    var.set("Matter")
 
-    Solid = IntVar()
-    Liquid = IntVar()
-    Gas = IntVar()
+    d = OptionMenu(win, var, "Solid", "Liquid", "Gas", command=func_3)
+    d.config(width=8)
+    d.place(x=10, y=count)
 
-    solid = mb.menu.add_checkbutton(label="Solid",variable=Solid)
-    liquid = mb.menu.add_checkbutton(label="Liquid",variable=Liquid)
-    gas = mb.menu.add_checkbutton(label="Gas",variable=Gas)
+    def func_2(value):
+        print(value)
+    
 
-    mb = Menubutton(text="Name of Substance", relief=RAISED)
-    mb.place(x=110, y= count)
+    var = StringVar(win)
+    var.set("Substance")
 
-    mb.menu = Menu(mb)
-    mb["menu"] = mb.menu
+    c = OptionMenu(win, var, "Zinc", "Copper", command=func_2)
+    c.config(width=10)
+    c.place(x=110, y=count)
 
-    Zinc_Electrode = IntVar()
-    Copper_Electrode = IntVar()
-
-    zinc_electrode = mb.menu.add_checkbutton(label="Zinc Electrode",variable=Zinc_Electrode)
-    copp_electrode = mb.menu.add_checkbutton(label="Copper Electrode",variable=Copper_Electrode)
 
     #1st Amount
-    mb = Menubutton(text="Amount", relief=RAISED)
-    mb.place(x=230, y= count)
+    def func(value):
+        print(value)
 
-    mb.menu = Menu(mb)
-    mb["menu"] = mb.menu
+    var = StringVar(win)
+    var.set("Amount")
 
-    one = IntVar()
-    two = IntVar()
-    three = IntVar()
-    four = IntVar()
-    five = IntVar()
-
-    one = mb.menu.add_checkbutton(label="1",variable=one)
-    two = mb.menu.add_checkbutton(label="2",variable=two)
-    three = mb.menu.add_checkbutton(label="3",variable=three)
-    four = mb.menu.add_checkbutton(label="4",variable=four)
-    five = mb.menu.add_checkbutton(label="5",variable=five)
+    w = OptionMenu(win, var, "1", "2", "3", command=func)
+    w.config(font=('Helvetica', (8)))
+    w.config(width=4)
+    w.place(x=220, y=count)
     
     while i >= 5:
         button_1.configure(state=DISABLED)
