@@ -5,7 +5,7 @@ import pyautogui
 import pygame
 
 win = tk.Tk()
-win.geometry("300x300")
+win.geometry("400x300")
 win.title("Settings of Experiment")
 win.configure(bg="grey")
 
@@ -61,8 +61,10 @@ w_1.config(font=('Helvetica', (8)))
 w_1.config(width=4)
 w_1.place(x=220, y=48)
 
-BUTTON_PRESSED = False
-
+check_orig = StringVar()
+btn = Checkbutton(win, text="Done", variable=check_orig, onvalue=1, offvalue=0).place(x=290, y=48)
+my_val = check_orig.get()
+check_orig.set(0)
 
 def drop():
     
@@ -103,6 +105,11 @@ def drop():
     w.config(font=('Helvetica', (8)))
     w.config(width=4)
     w.place(x=220, y=count)
+
+    check_1 = StringVar()
+    btn_1 = Checkbutton(win, text="Done", variable=check_1, onvalue=1, offvalue=0).place(x=290, y=count)
+    my_val2 = check_1.get()
+    check_1.set(0)
     
     while i >= 5:
         button_1.configure(state=DISABLED)
@@ -112,6 +119,12 @@ def drop():
 
 count = 85
 i = 1
+
+
+ 
+
+
+
 button_1 = tk.Button(win, text="Add", width=5, height=1, command=drop).place(x=125,y=270)
 
 win.mainloop()
