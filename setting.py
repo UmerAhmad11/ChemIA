@@ -144,11 +144,13 @@ def drop():
     w.place(x=220, y=count)
 
     def done():
+        global result
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "1":
-            head = pygame.Rect(20, 20, 60, 60)
-            print("Done Saving Rect")
+            result = "Done Saving Rect" 
+            print(result)
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "2":
-            print("Hello2")
+            result = "Hello2"
+            print(result)
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "3":
             print("Hello3")
         if var.get() == "Solid" and var_1.get() == "Copper" and var_2.get() == "1":
@@ -201,6 +203,41 @@ count = 85
 i = 1
 
 button_1 = tk.Button(win, text="Add", width=5, height=1, command=drop).place(x=125,y=270)
+
+def go():
+    pygame.init()
+    screen = pygame.display.set_mode((430,410))
+    white = [255, 255, 255]
+    red = [255, 0, 0]
+    screen.fill(white)
+    pygame.display.update()
+
+    if result == "Done Saving Rect":
+        head = pygame.Rect(20, 20, 60, 60)
+        pygame.draw.rect(screen, (255, 50, 50), head)
+
+    elif result == "Hello2":
+        head = pygame.Rect(80, 80, 60, 60)
+        pygame.draw.rect(screen, (255, 50, 50), head)
+
+    pygame.display.update()
+
+    run = True
+    while run:  
+    
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False 
+            
+        screen.fill((255,255,255))
+
+    result.set(0)
+
+    pygame.quit()
+
+
+button_2 = tk.Button(win, text="Create", width=5, height=1, command=go).place(x=350,y=150)
+
 
 win.mainloop()
 '''
