@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import *
+from PIL import ImageTk, Image
+import os
+
 
 
 def main():
@@ -9,6 +12,9 @@ def main():
     window.title("Chem IA")
     window.configure(bg="grey")
 
+    img = ImageTk.PhotoImage(Image.open('cap.png'))
+    panel = tk.Label(window, image = img)
+    panel.pack(side = "top")
 
     def start():
         window.destroy()
