@@ -144,15 +144,21 @@ def drop():
     w.place(x=220, y=count)
 
     def done():
-        global result
+        global result_1
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "1":
-            result = "Done Saving Rect" 
-            print(result)
+            result_1 = True
+        else:
+            result_1 = False
+        global result_2
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "2":
-            result = "Hello2"
-            print(result)
+            result_2 = True
+        else:
+            result_2 = False
+        global result_3
         if var.get() == "Solid" and var_1.get() == "Zinc" and var_2.get() == "3":
-            print("Hello3")
+            result_3 = True
+        else: 
+            result_3 = False
         if var.get() == "Solid" and var_1.get() == "Copper" and var_2.get() == "1":
             print("Hi1")
         if var.get() == "Solid" and var_1.get() == "Copper" and var_2.get() == "2":
@@ -204,6 +210,15 @@ i = 1
 
 button_1 = tk.Button(win, text="Add", width=5, height=1, command=drop).place(x=125,y=270)
 
+def tick():
+    check_2.set(1)
+
+check_2 = StringVar()
+btn_2 = Checkbutton(win, text="Done", variable=check_2, onvalue=1, offvalue=0, command=tick).place(x=340, y=240)
+my_val3 = check_2.get()
+check_2.set(0)
+
+
 def go():
     pygame.init()
     screen = pygame.display.set_mode((430,410))
@@ -212,15 +227,39 @@ def go():
     screen.fill(white)
     pygame.display.update()
 
-    if result == "Done Saving Rect":
-        head = pygame.Rect(20, 20, 60, 60)
-        pygame.draw.rect(screen, (255, 50, 50), head)
+    if check_2.get() == "1":    
+        
+        if result_1 == True:
+            head = pygame.Rect(20, 20, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head)
 
-    elif result == "Hello2":
-        head = pygame.Rect(80, 80, 60, 60)
-        pygame.draw.rect(screen, (255, 50, 50), head)
+        elif result_1 == False:
+            pass
 
-    pygame.display.update()
+        if result_2 == True:
+            head = pygame.Rect(80, 80, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head)
+            head = pygame.Rect(180, 80, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head) 
+
+        elif result_2 == False:
+            pass
+
+        if result_3 == True:
+            head = pygame.Rect(80, 180, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head)
+            head = pygame.Rect(180, 280, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head)
+            head = pygame.Rect(130, 280, 60, 60)
+            pygame.draw.rect(screen, (255, 50, 50), head)
+
+        elif result_3 == False:
+            pass
+              
+    else:
+        print("Sorry")
+
+    pygame.display.update()    
 
     run = True
     while run:  
@@ -231,7 +270,7 @@ def go():
             
         screen.fill((255,255,255))
 
-    result.set(0)
+    pygame.display.update()
 
     pygame.quit()
 
