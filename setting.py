@@ -61,12 +61,21 @@ w_1.config(width=4)
 w_1.place(x=220, y=48)
 
 def done_orig():
+    global result_1
     if var_orig.get() == "Solid" and var_orig1.get() == "Zinc" and var_orig2.get() == "1":
-        print("Hello1")
+        result_1 = True
+    else:
+        result_1 = False
+    global result_2
     if var_orig.get() == "Solid" and var_orig1.get() == "Zinc" and var_orig2.get() == "2":
-        print("Hello2")
+        result_2 = True
+    else:
+        result_2 = False
+    global result_3
     if var_orig.get() == "Solid" and var_orig1.get() == "Zinc" and var_orig2.get() == "3":
-        print("Hello3")
+        result_3 = True
+    else:
+        result_3 = False
     if var_orig.get() == "Solid" and var_orig1.get() == "Copper" and var_orig2.get() == "1":
         print("Hi1")
     if var_orig.get() == "Solid" and var_orig1.get() == "Copper" and var_orig2.get() == "2":

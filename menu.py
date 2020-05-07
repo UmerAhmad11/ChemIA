@@ -39,6 +39,8 @@ def main():
     button = tk.Button(window, text="Start", width= 20, height= 1, command=start).place(x=180, y=200)
     button = tk.Button(window, text="Exit", width= 20, height= 1, command=exit).place(x=180, y=300)
 
+    lb = tk.Label(window, text="Constructed by Umer Ahmad DP1", bg="grey", font=('Times', 12, 'bold')).place(x=140,y=450)
+
 
 
     window.mainloop()
