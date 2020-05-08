@@ -234,6 +234,7 @@ def go():
     white = [255, 255, 255]
     red = [255, 0, 0]
     screen.fill(white)
+    FPS = 30
     pygame.display.update()
 
     if check_2.get() == "1":    
@@ -268,7 +269,11 @@ def go():
     else:
         print("Sorry")
 
-    pygame.display.update()    
+    head_dragging = False
+
+    pygame.display.update() 
+
+    clock = pygame.time.Clock()   
 
     run = True
     while run:  
@@ -277,8 +282,29 @@ def go():
             if event.type == pygame.QUIT:
                 run = False 
             
-        screen.fill((255,255,255))
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:            
+                    if head.collidepoint(event.pos):
+                        head_dragging = True
+                        mouse_x, mouse_y = event.pos
+                        offset_x = head.x - mouse_x
+                        offset_y = head.y - mouse_y
 
+            elif event.type == pygame.MOUSEBUTTONUP:
+                if event.button == 1:            
+                    head_dragging = False
+
+            elif event.type == pygame.MOUSEMOTION:
+                if head_dragging:
+                    mouse_x, mouse_y = event.pos
+                    head.x = mouse_x + offset_x
+                    head.y = mouse_y + offset_y
+            
+        screen.fill((255,255,255))
+        pygame.draw.rect(screen, (255, 0, 0), head)
+        pygame.display.flip()
+
+            
     pygame.display.update()
 
     pygame.quit()
